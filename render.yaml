@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: baileys-api-service
+    env: docker
+    repo: https://github.com/fazer-ai/baileys-api.git
+    branch: main
+    dockerContext: .
+    dockerfilePath: Dockerfile
+    plan: free
+    healthCheckPath: /status
+    envVars:
+      - key: PORT
+        value: 3025
+      - key: NODE_ENV
+        value: production
+      - key: API_KEY
+        generateValue: true
+      - key: CORS_ORIGIN
+        value: "*"
+      # REDIS_URL will be populated automatically by Render if Redis is attached
+    
+  - type: redis
+    name: baileys-redis
+    plan: free
+    ipAllowList: [] # internal only

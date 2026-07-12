@@ -17,4 +17,5 @@ RUN bun install
 EXPOSE 3025
 
 # Command to run the application using Bun natively
-CMD ["bun", "src/index.ts"]
+# We first run the script to ensure our API_KEY exists in Redis, then start the server
+CMD ["sh", "-c", "bun scripts/manage-api-keys.ts create admin ${API_KEY:-87f4e9a8ea7d2abff66acdcb365bf2a6} && bun src/index.ts"]

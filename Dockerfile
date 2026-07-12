@@ -10,6 +10,9 @@ WORKDIR /app
 # Clone the actual Baileys API repository into the container's working directory
 RUN git clone https://github.com/fazer-ai/baileys-api.git .
 
+# Install bun (required for some scripts in the repo)
+RUN npm install -g bun
+
 # Install the project dependencies
 RUN npm install --legacy-peer-deps
 

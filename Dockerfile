@@ -11,7 +11,7 @@ WORKDIR /app
 RUN git clone https://github.com/fazer-ai/baileys-api.git .
 
 # Install the project dependencies
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 # Build the TypeScript code (if required by the repo)
 RUN npm run build || true

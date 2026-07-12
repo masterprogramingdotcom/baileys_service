@@ -16,8 +16,7 @@ RUN npm install -g bun
 # Install the project dependencies (ignore-scripts to skip failing git-hooks)
 RUN npm install --legacy-peer-deps --ignore-scripts
 
-# Build the TypeScript code (if required by the repo)
-RUN npm run build || true
+# No build script required for this repo
 
 # Expose the port the app runs on
 EXPOSE 3025

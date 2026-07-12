@@ -13,8 +13,8 @@ RUN git clone https://github.com/fazer-ai/baileys-api.git .
 # Install bun (required for some scripts in the repo)
 RUN npm install -g bun
 
-# Install the project dependencies
-RUN npm install --legacy-peer-deps
+# Install the project dependencies (ignore-scripts to skip failing git-hooks)
+RUN npm install --legacy-peer-deps --ignore-scripts
 
 # Build the TypeScript code (if required by the repo)
 RUN npm run build || true
